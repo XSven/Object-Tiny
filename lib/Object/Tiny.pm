@@ -1,10 +1,8 @@
 package Object::Tiny;
 
 use strict 'vars', 'subs';
-BEGIN {
-	require 5.004;
-	$Object::Tiny::VERSION = '1.09';
-}
+
+our $VERSION = '1.09';
 
 sub import {
 	return unless shift eq 'Object::Tiny';
