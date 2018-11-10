@@ -3,7 +3,7 @@ package Object::Tiny;
 use strict 'vars', 'subs';
 BEGIN {
 	require 5.004;
-	$Object::Tiny::VERSION = '1.08';
+	$Object::Tiny::VERSION = '1.09';
 }
 
 sub import {
