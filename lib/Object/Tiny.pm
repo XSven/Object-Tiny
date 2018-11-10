@@ -2,7 +2,7 @@ package Object::Tiny;
 
 use strict 'vars', 'subs';
 
-our $VERSION = '1.09';
+our $VERSION = '1.10';
 
 sub import {
 	return unless shift eq 'Object::Tiny';
