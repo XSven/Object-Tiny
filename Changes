@@ -1,5 +1,8 @@
 Revision history for Perl extension Object-Tiny
 
+{{$NEXT}}
+        - distribution tooling updates
+
 1.08    2011-03-23
 	- No functional changes
 	- Makefile.PL contains the wrong abstract
