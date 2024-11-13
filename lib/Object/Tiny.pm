@@ -5,16 +5,15 @@ use strict 'vars', 'subs';
 our $VERSION = '1.10';
 
 sub import {
-	return unless shift eq 'Object::Tiny';
-	my $pkg   = caller;
-	my $child = !! @{"${pkg}::ISA"};
+	return unless shift eq __PACKAGE__;
+	my $pkg = caller;
 	eval join "\n",
 		"package $pkg;",
-		($child ? () : "\@${pkg}::ISA = 'Object::Tiny';"),
+		"our \@ISA = '${\__PACKAGE__}' unless \@ISA;",
 		map {
-			defined and ! ref and /^[^\W\d]\w*\z/s
+			defined and ! ref and /\A[^\W\d]\w*\z/
 			or die "Invalid accessor name '$_'";
-			"sub $_ { return \$_[0]->{$_} }"
+			"sub $_ { \$_[0]->{$_} }"
 		} @_;
 	die "Failed to generate $pkg" if $@;
 	return 1;
