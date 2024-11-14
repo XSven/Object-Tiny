@@ -38,7 +38,7 @@ SCOPE: {
 	eval {
 		$object->baz;
 	};
-	ok( $@, '->bar returns an error' );
+	ok( $@, '->baz returns an error' );
 	is( $object->{baz}, 3, '->{baz} does contain value' );
 }
 
