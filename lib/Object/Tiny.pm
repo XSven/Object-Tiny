@@ -11,7 +11,7 @@ sub import {
 		"package $pkg;",
 		"our \@ISA = '${\__PACKAGE__}' unless \@ISA;",
 		map {
-			defined and ! ref and /\A[^\W\d]\w*\z/
+			defined and ! ref and /\A[^\W\d]\w*\z/ and $_ ne 'new'
 			or die "Invalid accessor name '$_'";
 			"sub $_ { \$_[0]->{$_} }"
 		} @_;

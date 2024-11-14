@@ -7,7 +7,7 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More tests => 12;
+use Test::More tests => 13;
 
 # Define a class
 SCOPE: {
@@ -46,4 +46,6 @@ SCOPE: {
 SCOPE: {
 	eval "package Bar; use Object::Tiny 'bad thing';";
 	ok( $@ =~ /Invalid accessor name/, 'Got expected error' );
+	eval "package Baz; use Object::Tiny 'new';";
+	ok( $@ =~ /Invalid accessor name 'new'/, 'Got expected error' );
 }
