@@ -304,7 +304,8 @@ Adam Kennedy E<lt>adamk@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
-L<Config::Tiny>
+L<Object::Tiny::XS>, L<Object::Tiny::RW>, L<Object::Tiny::RW::XS>,
+L<Object::Tiny::Lvalue>, L<Class::Tiny>
 
 =head1 COPYRIGHT
 
