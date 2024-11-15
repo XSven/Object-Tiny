@@ -87,10 +87,10 @@ For a large list, I lay it out like this...
       item_font_size
       item_text_content
       item_display_time
-      seperator_font_face
-      seperator_font_color
-      seperator_font_size
-      seperator_text_content
+      separator_font_face
+      separator_font_color
+      separator_font_size
+      separator_text_content
   };
 
 This will create a bunch of simple accessors, and set the inheritance to
