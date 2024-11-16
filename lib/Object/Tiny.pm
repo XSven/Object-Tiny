@@ -1,6 +1,6 @@
 package Object::Tiny;
 
-use strict 'vars', 'subs';
+use strict;
 
 our $VERSION = '1.10';
 
