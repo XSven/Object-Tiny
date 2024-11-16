@@ -13,7 +13,7 @@ sub import {
 		map {
 			defined and ! ref and /\A[^\W\d]\w*\z/ and $_ ne 'new'
 			or die "Invalid accessor name '$_'";
-			"sub $_ { \$_[0]->{$_} }"
+			"sub $_ { require Carp, Carp::croak(\"'$_' is a read-only accessor\") if \@_ > 1; \$_[0]->{$_} }"
 		} @_;
 	die "Failed to generate $pkg" if $@;
 	return 1;
