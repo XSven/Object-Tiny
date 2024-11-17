@@ -1,6 +1,7 @@
 package Object::Tiny;
 
 use strict;
+use warnings;
 
 our $VERSION = '1.10';
 

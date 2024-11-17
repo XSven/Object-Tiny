@@ -7,7 +7,8 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More tests => 15;
+use Test::More tests => 17;
+use Test::Warnings 0.005 qw( :no_end_test warning );
 
 # Define a class
 SCOPE: {
@@ -32,7 +33,7 @@ SCOPE: {
 	my $object = Foo->new( foo => 1, bar => 2, baz => 3 );
 	isa_ok( $object, 'Foo' );
 	isa_ok( $object, 'Object::Tiny' );
-	is( scalar( keys %$object ), 3, 'Object contains expect elements' );
+	is( scalar( keys %$object ), 3, 'Object contains expected elements' );
 	is( $object->foo, 1, '->foo ok' );
 	is( $object->bar, 2, '->bar ok' );
 	eval {
@@ -45,6 +46,8 @@ SCOPE: {
 	};
 	ok( $@, '->bar(5) returns an error' );
 	is( $object->bar, 2, '->bar still ok' );
+  like( warning { Foo->new( foo => 1, 'bar' ) }, qr/\AOdd number/, 'Warning raised: incomplete constructor params' );
+  like( warning { Foo->new( undef, 1, bar => 2 ) }, qr/uninitialized value/, 'Warning raised: undefined param name' );
 }
 
 # Trigger the constructor exception
