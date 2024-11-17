@@ -13,7 +13,7 @@ sub import {
 		"our \@ISA = '${\__PACKAGE__}' unless \@ISA;",
 		map {
 			defined and ! ref and /\A[^\W\d]\w*\z/ and $_ ne 'new'
-			or die "Invalid accessor name '$_'";
+			or require Carp and Carp::croak("Invalid accessor name '$_'");
 			"sub $_ { require Carp, Carp::croak(\"'$_' is a read-only accessor\") if \@_ > 1; \$_[0]->{$_} }"
 		} @_;
 	die "Failed to generate $pkg" if $@;
